@@ -6,7 +6,6 @@ class Deck:
         #the deck will store a list of cards, each will be a Card object
         self._cards = []
         self.populate()
-        #print(self._cards)
     #method to populate the deck w the necessary 52 cards
     def populate(self):
         suits = ["hearts", "diamonds", "clubs", "spades"]
@@ -19,5 +18,22 @@ class Deck:
             #self._cards = [ Card(s, n) for s in suits for n in numbers ]
         self._cards = cards
 
-    def shuffle():
+    def shuffle(self):
+        random.shuffle(self._cards)
+        # print(self._cards)
+    
+    @property
+    def cards(self):
+        return self._cards
+    
+
+
+
+
 my_deck = Deck()
+
+#call shuffle() property of Deck on my_deck and the list is mutated (change order)
+my_deck.shuffle()
+
+#calling getter method to return shuffled deck
+print(my_deck.cards)
