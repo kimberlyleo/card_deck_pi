@@ -1,37 +1,47 @@
-from random import seed #seems to work fine without seeding the rand int
-from random import randint
-
-# class Card:
-#     def __init__(self, suit, number):
-#         self.suit = suit
-#         self.number = number
+# from random import seed #seems to work fine without seeding the rand int
+# from random import randint
 
 class Card:
-    def __init__(self):
-        self.suit = randint(1,4)
-        self.value = randint(1,13)
-        if self.suit == 1:
-            self.suit = "hearts"
-        elif self.suit == 2:
-           self.suit = "clubs"
-        elif self.suit == 3:
-            self.suit = "spades"
-        elif self.suit == 4:
-            self.suit = "diamonds"
-        if self.value == 1:
-            self.value = "A"
-        elif self.value == 11:
-            self.value = "J"
-        elif self.value == 12:
-            self.value = "Q"
-        elif self.value == 13:
-            self.value = "K"
-        self.card_string = 'this is a {} of {}'.format(self.value, self.suit)
+    def __init__(self, number, suit):
+        self._number = number
+        #add underscore to attribute _suit to indicate that this property should not be accessed directly; designated getter and/or setter method should be used
+        self._suit = suit
+    def __repr__(self):
+        return  '{} of {}'.format(str(self.number), self.suit)
+
+    #getter method suit can be called to access property safely
+    #@property is a 'decorator' wrapper required for getter method to say that its a property
+    @property
+    def suit(self):
+        return self._suit
+
+    #@self.setter is a required decorator for the setter method to say that its a property
+    @suit.setter
+    def suit(self, suit):
+        if suit in ["hearts", "diamonds", "clubs", "spades"]:
+            self._suit = suit
+        else:
+            print("Invalid suit")
+    
+    @property
+    def number(self):
+        return self._number
+    
+    @number.setter 
+    def number(self, number):
+        if number in range(2, 11):
+            self._number = number
+        elif number in ["j", "q", "k", "a"]:
+            self._number = number
+        else:
+            print("Invalid number")
+
+
+
 
 
 #instantiate Card with instance card (automatically generates card face value using a constructor method)
-card = Card()
-
-
-print(card.card_string)
-
+#card = Card(9, "hearts")
+#print(card)
+# card.number = 11 #returns "Invalid number" and card._number is unchanged
+# print(card)
