@@ -1,4 +1,5 @@
 from card import Card
+from hand import Hand
 import random
 
 class Deck:
@@ -26,14 +27,31 @@ class Deck:
     def cards(self):
         return self._cards
     
+    def play_card(self, number, suit):
+        pass
+    
+    def deal(self, players, cards_per_hand):
+        all_player_cards = {}
+        for i in range(players):
+            player_hand  = []
+            for _ in range(cards_per_hand):
+                player_hand.append(self._cards.pop())
+            all_player_cards["player" + str(i +1)] = player_hand
+        return all_player_cards
+        # random set of cards and remove all
+        # or just allow pull random to take number of cards as argument
+    
 
 
 
 
 my_deck = Deck()
 
-#call shuffle() property of Deck on my_deck and the list is mutated (change order)
-my_deck.shuffle()
+#call shuffle() property of Deck on my_deck and the list is mutated 
+#my_deck.shuffle()
 
 #calling getter method to return shuffled deck
-print(my_deck.cards)
+# print(my_deck.cards)
+
+#dealing a round for a game with 3 players with 4 cards per hand
+#print(my_deck.deal(3,4))
