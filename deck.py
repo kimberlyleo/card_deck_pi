@@ -30,13 +30,21 @@ class Deck:
     def play_card(self, number, suit):
         pass
     
-    def deal(self, players, cards_per_hand):
+    def play_game():
+        pass
+        #provide number of players and cards_per_hand arguments here  
+        # call deal for each round
+
+    def deal(self, players):
         all_player_cards = {}
         for i in range(players):
-            player_hand  = []
-            for _ in range(cards_per_hand):
-                player_hand.append(self._cards.pop())
-            all_player_cards["player" + str(i +1)] = player_hand
+            hand = []
+            hand.append(Hand()) 
+            all_player_cards[(i + 1)] = hand
+            
+            # for _ in range(cards_per_hand):
+            #     player_hand.append(self._cards.pop())
+            
         return all_player_cards
         # random set of cards and remove all
         # or just allow pull random to take number of cards as argument
@@ -54,4 +62,4 @@ my_deck = Deck()
 # print(my_deck.cards)
 
 #dealing a round for a game with 3 players with 4 cards per hand
-#print(my_deck.deal(3,4))
+print(my_deck.deal(3,4))
