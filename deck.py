@@ -1,5 +1,4 @@
 from card import Card
-from hand import Hand
 import random
 
 class Deck:
@@ -30,21 +29,18 @@ class Deck:
     def play_card(self, number, suit):
         pass
     
-    def play_game():
+    def play_game(self):
         pass
         #provide number of players and cards_per_hand arguments here  
         # call deal for each round
 
-    def deal(self, players):
+    def deal(self, players, cards_per_hand):
         all_player_cards = {}
         for i in range(players):
-            hand = []
-            hand.append(Hand()) 
-            all_player_cards[(i + 1)] = hand
-            
-            # for _ in range(cards_per_hand):
-            #     player_hand.append(self._cards.pop())
-            
+            player_hand = []
+            for _ in range(cards_per_hand):
+                player_hand.append(self._cards.pop())
+            all_player_cards[("player_" +str(i + 1))] = player_hand
         return all_player_cards
         # random set of cards and remove all
         # or just allow pull random to take number of cards as argument
