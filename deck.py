@@ -1,4 +1,5 @@
 from card import Card
+
 import random
 
 class Deck:
@@ -6,6 +7,7 @@ class Deck:
         #the deck will store a list of cards, each will be a Card object
         self._cards = []
         self.populate()
+        self.shuffle()
     #method to populate the deck w the necessary 52 cards
     def populate(self):
         suits = ["hearts", "diamonds", "clubs", "spades"]
@@ -25,7 +27,13 @@ class Deck:
     @property
     def cards(self):
         return self._cards
-    
+
+    def card_check(self, card):
+        if card in self._cards:
+            print("{} is in the deck".format(card))
+        else:
+            print("{} is not in the deck".format(card))
+
     def play_card(self, number, suit):
         pass
     
@@ -33,6 +41,8 @@ class Deck:
         pass
         #provide number of players and cards_per_hand arguments here  
         # call deal for each round
+    
+
 
     def deal(self, players, cards_per_hand):
         all_player_cards = {}
@@ -45,7 +55,9 @@ class Deck:
         # random set of cards and remove all
         # or just allow pull random to take number of cards as argument
     
-
+    def return_card_to_deck(self,card):
+        #remove card from player_hand and return to deck
+        pass
 
 
 
@@ -59,3 +71,6 @@ my_deck = Deck()
 
 #dealing a round for a game with 3 players with 4 cards per hand
 print(my_deck.deal(3,4))
+
+#card check for "a of spades"
+#my_deck.card_check("a of spades")
